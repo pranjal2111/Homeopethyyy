@@ -1,0 +1,79 @@
+<!-- inquiry_confirmation_email.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry Confirmation</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <p>Dear {{ user_name }},</p>
+
+    <p>Your inquiry has been successfully generated with the following details:</p>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Details</th>
+        </tr>
+        <tr>
+            <td>Medicine Name</td>
+            <td>{{ medicine_name }}</td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td>{{ quantity }}</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>{{ phone }}</td>
+        </tr>
+        <tr>
+            <td>Number</td>
+            <td>{{ number }}</td>
+        </tr>
+        <tr>
+            <td>Society Name</td>
+            <td>{{ society_name }}</td>
+        </tr>
+        <tr>
+            <td>Landmark</td>
+            <td>{{ landmark }}</td>
+        </tr>
+        <tr>
+            <td>Street</td>
+            <td>{{ street }}</td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>{{ city }}</td>
+        </tr>
+        <tr>
+            <td>Pincode</td>
+            <td>{{ pincode }}</td>
+        </tr>
+        <tr>
+            <td>Message</td>
+            <td>{{ message }}</td>
+        </tr>
+    </table>
+
+    <p>Thank you for your inquiry!</p>
+
+    <p>Best regards,<br>Medizo</p>
+</body>
+</html>

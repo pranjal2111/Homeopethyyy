@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if messages %}
+        {% for i in messages %}
+            <script>alert("{{ i }}")</script>
+        {% endfor %}
+    {% endif %}
+    <style>
+        .nav-link.active {
+            color: #007bff; /* Change this to your desired active color */
+            font-weight: bold; /* Optional: make the active link bold */
+            text-decoration: underline; /* Optional: underline the active link */
+        }
+    </style>
+    <!-- Top Header Start -->
+    <header class="top-header top-header-bg">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 col-md-8">
+                    <div class="header-left">
+                        <div class="header-left-card">
+                            <ul>
+    {% if request.session.log_email %}
+    <li>
+        {% if request.session.log_dp %}
+            <img src="{{ request.session.log_dp }}" alt="User " width="32" height="32" class="rounded-circle">
+        {% else %}
+            <img src="" alt="User " width="32" height="32" class="rounded-circle">
+        {% endif %}
+    </li>
+    <li>
+        <div class="head-icon">
+            <i class='bx bx-mail-send'></i>
+        </div>
+        <a href=""><span>Welcome, {{ request.session.log_email }}</span></a>
+    </li>
+    {% endif %}
+    <li>
+        <div class="head-icon">
+            <i class='bx bx-time-five'></i>
+        </div>
+        <a href="/appointment">Mon - Sat: 8.00 am - 7.00 pm</a>
+    </li>
+</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="header-right">
+                        <div class="top-social-link">
+                            <ul>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-facebook'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-twitter'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-youtube'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-instagram'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-google-plus'></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Top Header End -->
+    <!-- Start Navbar Area -->
+    <div class="navbar-area">
+        <!-- Menu For Mobile Device -->
+        <div class="mobile-nav">
+            <a href="/" class="logo">
+                <img src="static/assets/img/logo.png" class="logo-one" alt="Logo">
+                <img src="static/assets/img/logo-2.png" class="logo-two" alt="Logo">
+            </a>
+        </div>
+        <!-- Menu For Desktop Device -->
+        <div class="main-nav ">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-light ">
+                    <a class="navbar-brand" href="/">
+                        <img src="/static/assets/img/logo.png" class="logo-one" alt="Logo">
+                        <img src="/static/assets/img/logo-2.png" class="logo-two" alt="Logo">
+                    </a>
+                    <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                        <ul class="navbar-nav m-auto">
+                            <li class="nav-item">
+                                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/about" class="nav-link {% if request.path == '/about' %}active{% endif %}">About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/shop" class="nav-link {% if request.path == '/shop' %}active{% endif %}">Medicine</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/contact" class="nav-link {% if request.path == '/contact' %}active{% endif %}">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/appointment" class="nav-link {% if request.path == '/appointment' %}active{% endif %}">Appointment</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/showinquiries" class="nav-link {% if request.path == '/showinquiries' %}active{% endif %}">View Inquiries</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#">
+                                    More Details
+                                    <i class='bx bx-chevron-down'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a href="/doctors" class="nav-link {% if request.path == '/doctors' %}active{% endif %}">Doctors</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/services-1" class="nav-link {% if request.path == '/services-1' %}active{% endif %}">Specialization</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/departments" class="nav-link {% if request.path == '/departments' %}active{% endif %}">Departments</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">FAQ</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/terms-condition" class="nav-link {% if request.path == '/terms-condition' %}active{% endif %}">Terms & Conditions</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/privacy-policy" class="nav-link {% if request.path == '/privacy-policy' %}active{% endif %}">Privacy Policy</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            {% if request.session.log_name == None %}
+                            <li class="nav-item">
+                                <a href="/sign-in" class="nav-link {% if request.path == '/sign-in' %}active{% endif %}">Sign In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/sign-up" class="nav-link {% if request.path == '/sign-up' %}active{% endif %}">Sign Up</a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a href="/signout" class="nav-link {% if request.path == '/signout' %}active{% endif %}">Sign Out</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Navbar Area -->
+ <!-- Color Switch Button -->
+<!--        <div class="switch-box">-->
+<!--            <label id="switch" class="switch">-->
+<!--                <input type="checkbox" onchange="toggleTheme()" id="slider">-->
+<!--                <span class="slider round"></span>-->
+<!--            </label>-->
+<!--        </div>-->
+        <!-- Color Switch Button End -->
+</body>
+</html>

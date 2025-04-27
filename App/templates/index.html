@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<!-- Mirrored from templates.hibootstrap.com/medizo/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 16 Dec 2024 07:46:29 GMT -->
+<head>
+        <!-- Required Meta Tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Links of CSS Files -->
+        <link rel="stylesheet" href="static/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/assets/css/animate.min.css">
+        <link rel="stylesheet" href="static/assets/fonts/flaticon.css">
+        <link rel="stylesheet" href="static/assets/css/boxicons.min.css">
+        <link rel="stylesheet" href="static/assets/css/magnific-popup.min.css">
+        <link rel="stylesheet" href="static/assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="static/assets/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="static/assets/css/nice-select.min.css">
+        <link rel="stylesheet" href="static/assets/css/meanmenu.css">
+        <link rel="stylesheet" href="static/assets/css/style.css">
+        <link rel="stylesheet" href="static/assets/css/responsive.css">
+        <link rel="stylesheet" href="static/assets/css/theme-dark.css">
+
+        <!--=== Title ===-->
+        <title>Medizo - Medical Health & Doctor Clinic</title>
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="static/assets/img/favicon.png">
+    </head>
+    <body>
+        <!-- Pre Loader -->
+        <div class="preloader">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </div>
+     <!-- End Pre Loader -->
+
+     {% include "nav.html" %}
+
+        <!-- Banner Area -->
+        <div class="banner-area banner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="banner-content">
+                            <span>The Home of Your Hope</span>
+                            <h1>Your Good Health is Our Responsibility</h1>
+                            <p>Get your appointment through online and remain safe at your home. Because your safety is our first priority.</p>
+                            <div class="banner-btn">
+                                <a href="/appointment" class="appointment-btn">Request Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!--            <div class="banner-img">-->
+<!--                <img src="static/assets/img/home-one/home-one-img.png" alt="Images">-->
+<!--            </div>-->
+<!--            <div class="banner-shape">-->
+<!--                <div class="shape1">-->
+<!--                    <img src="static/assets/img/home-one/shape1.png" alt="Images">-->
+<!--                </div>-->
+<!--                <div class="shape2">-->
+<!--                    <img src="static/assets/img/home-one/shape2.png" alt="Images">-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+        <!-- Banner Area End -->
+
+<!--        &lt;!&ndash; Banner Bottom &ndash;&gt;-->
+<!--        <div class="banner-bottom">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-6">-->
+<!--                        <div class="banner-bottom-card">-->
+<!--                            <i class='flaticon-call'></i>-->
+<!--                            <div class="content">-->
+<!--                                <span>Get Emergency Service At 24/7</span>-->
+<!--                                <h3><a href="tel:812345678912">+8 (123) 456 789 12</a></h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Banner Bottom End &ndash;&gt;-->
+
+
+        <!-- Service Area -->
+        <section class="service-area pt-100 pb-70">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>Services That We Provide</h2>
+            <div class="section-icon">
+                <div class="icon">
+                    <i class="flaticon-dna"></i>
+                </div>
+            </div>
+            <p>
+                We provide excellent services for your ultimate good health. Here are some of the services included
+                for your better understanding that we are always at your side.
+            </p>
+        </div>
+        <div class="row pt-45" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            {% for i in data %}
+            <div class="col-lg-4 col-md-6" style="flex: 0 0 30%; max-width: 30%; margin-bottom: 20px;">
+                <div class="service-card" style="height: 350px; width: 100%; position: relative; overflow: hidden;">
+                    <a href="/servicedetails/{{ i.id }}" style="flex-shrink: 0;">
+                        <img src="/media/{{ i.img }}" alt="Images" style="width: 100%; height: 100%; object-fit: cover;">
+                    </a>
+                    <div class="service-content" style="position: absolute; bottom: 15px; left: 15px; right: 15px; text-align: center; color: white; background: rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 5px;">
+                        <h3 style="margin: 0; font-size: 17px;"><a href="/servicedetails/{{ i.id }}" style="text-decoration: none; color: white;">{{ i.name }}</a></h3>
+                        <div class="content">
+                            <span><a href="/servicedetails/{{ i.id }}"><i class="flaticon-view"></i></a></span>
+                            <p style="margin: 0; color: white;">{{ i.desc }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+         <div class="about-btn" style="display: flex; justify-content: center;">
+            <a href="/services-1" class="default-btn">Explore More</a>
+        </div>
+    </div>
+</section>
+                    <div class="col-lg-12 col-md-12">
+        <div class="pagination-area">
+            {% if data.has_previous %}
+                <a href="?page={{ data.previous_page_number }}" class="prev page-numbers">
+                    <i class="bx bx-chevron-left"></i>
+                </a>
+            {% endif %}
+
+            {% for num in data.paginator.page_range %}
+                {% if data.number == num %}
+                    <span class="page-numbers current" aria-current="page">{{ num }}</span>
+                {% else %}
+                    <a href="?page={{ num }}" class="page-numbers">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if data.has_next %}
+                <a href="?page={{ data.next_page_number }}" class="next page-numbers">
+                    <i class="bx bx-chevron-right"></i>
+                </a>
+            {% endif %}
+        </div>
+
+    </div>
+        <!-- Service Area End -->
+
+
+        <!-- Doctors Area -->
+        <div class="doctors-area ptb-100">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h2>Meet Our Experts</h2>
+                    <div class="section-icon">
+                        <div class="icon">
+                            <i class="flaticon-dna"></i>
+                        </div>
+                    </div>
+                    <p>
+                        We provide excellent services for your ultimate good health. Here some of the services are included
+                        for your better understand that we are always at your side.
+                    </p>
+                </div>
+                 <div class="row">
+                                {% for i in ddata %}
+                                <div class="col-lg-4 col-md-6">
+                                  <div class="doctors-item" style="height: 450px; display: flex; flex-direction: column; justify-content: space-between;">
+                                        <div class="doctors-img" style="flex-shrink: 0; overflow: hidden; height: 800px;">
+                                            <a href="doctors-details/{{i.id}}">
+                                                <img src="/media/{{ i.img }}" alt="Images" style="width: 400%; height: 400%; object-fit: cover; transition: transform 0.3s;">
+                                            </a>
+                                        </div>
+
+                                      <div class="content" style="flex-grow: 1; padding: 10px;">
+                                            <h3 style="margin: 0;"><a href="doctors-details/{{i.id}}">{{ i.name }}</a></h3>
+                                            <span> {{ i.department }}</span><br>
+
+                                            <span>{{ i.specialist }}</span><br>
+                                            <ul class="social-link" style="list-style: none; padding: 0; display: flex; justify-content: space-between;">
+                                                <li><a href="#" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+                                                <li><a href="#" target="_blank"><i class='bx bxl-twitter'></i></a></li>
+                                                <li><a href="#" target="_blank"><i class='bx bxl-instagram'></i></a></li>
+                                                <li><a href="#" target="_blank"><i class='bx bxl-linkedin'></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                     <div class="about-btn" style="text-align: center;">
+                        <a href="/doctors" class="default-btn">Explore More</a>
+                    </div>
+                            </div>
+            </div>
+
+            <div class="doctors-shape">
+                <div class="doctors-shape-1">
+                    <img src="static/assets/img/doctors/doctors-shape1.png" alt="Images">
+                </div>
+                <div class="doctors-shape-2">
+                    <img src="static/assets/img/doctors/doctors-shape2.png" alt="Images">
+                </div>
+            </div>
+        </div>
+        <!-- Doctors Area End -->
+
+
+        <!-- About Area -->
+        <div class="about-area pt-100 pb-70">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about-img">
+                            <img src="static/assets/img/about-img/about-img.png" alt="Images">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="about-content">
+                            <div class="section-title">
+                                <span>About Us</span>
+                                <h2>Your Trusted Partner in Healthcare</h2>
+                                <p>At Medizo, we are committed to providing top-quality medical services with a patient-first approach. Your health and well-being are our highest priorities, and we stand by your side every step of the way.</p>
+                                <p>
+                                   Medizo Care offers personalized, plan-based healthcare programs designed to support long-term illness and disease management. We emphasize a collaborative approach, ensuring seamless coordination between family members and caregivers to deliver the best possible care.
+                                </p>
+                            </div>
+                            <div class="about-card">
+                                <i class='flaticon-24-hours bg-one'></i>
+                                <div class="content">
+                                    <span>24/7 Support</span>
+                                    <p>Our dedicated medical team is always available to provide expert guidance and assistance.</p>
+                                </div>
+                            </div>
+
+                            <div class="about-card">
+                                <i class='flaticon-ambulance-2 bg-two'></i>
+                                <div class="content">
+                                    <span>Emergency Support</span>
+                                    <p> Immediate medical support from our specialized professionals to ensure timely intervention in critical situations.</p>
+                                </div>
+                            </div>
+                            <p>At Medizo, we strive to redefine healthcare with compassion, innovation, and excellence.</p>
+                            <div class="about-btn">
+                                <a href="/about" class="default-btn">Explore More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About Area End -->
+
+        <!-- Emergency Area -->
+        <div class="emergency-area ptb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="emergency-content">
+                            <h2>Get <b>Emergency</b> Care 24/7</h2>
+                            <p>We are always at your side. We are 24 hours available for you in emergency situation.</p>
+                            <div class="emergency-icon-content">
+                                <i class="flaticon-24-hours-1"></i>
+                                <h3><a href="tel:812345678912">+8 (123) 456 789 12</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="emergency-shape">
+                <img src="static/assets/img/emergency/emergency-shape.png" alt="Images">
+            </div>
+        </div>
+        <!-- Emergency Area End -->
+
+        <!-- Brand Area -->
+        <div class="brand-area brand-bg">
+            <div class="container">
+                <div class="brand-slider owl-carousel owl-theme">
+                    <div class="brand-item">
+                        <img src="static/assets/img/brand/brand-img1.png" class="brand-logo-one" alt="Images">
+                        <img src="static/assets/img/brand/brand-logo1.png" class="brand-logo-two" alt="Images">
+                    </div>
+                    <div class="brand-item">
+                        <img src="static/assets/img/brand/brand-img2.png" class="brand-logo-one" alt="Images">
+                        <img src="static/assets/img/brand/brand-logo2.png" class="brand-logo-two" alt="Images">
+                    </div>
+                    <div class="brand-item">
+                        <img src="static/assets/img/brand/brand-img3.png" class="brand-logo-one" alt="Images">
+                        <img src="static/assets/img/brand/brand-logo3.png" class="brand-logo-two" alt="Images">
+                    </div>
+                    <div class="brand-item">
+                        <img src="static/assets/img/brand/brand-img4.png" class="brand-logo-one" alt="Images">
+                        <img src="static/assets/img/brand/brand-logo4.png" class="brand-logo-two" alt="Images">
+                    </div>
+                    <div class="brand-item">
+                        <img src="static/assets/img/brand/brand-img5.png" class="brand-logo-one" alt="Images">
+                        <img src="static/assets/img/brand/brand-logo5.png" class="brand-logo-two" alt="Images">
+                    </div>
+                    <div class="brand-item">
+                        <img src="static/assets/img/brand/brand-img6.png" class="brand-logo-one" alt="Images">
+                        <img src="static/assets/img/brand/brand-logo6.png" class="brand-logo-two" alt="Images">
+                    </div>
+                    <div class="brand-item">
+                        <img src="static/assets/img/brand/brand-img3.png" class="brand-logo-one" alt="Images">
+                        <img src="static/assets/img/brand/brand-logo3.png" class="brand-logo-two" alt="Images">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Brand Area End -->
+
+<!-- Footer Area -->
+<footer class="footer-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 d-flex justify-content-center"> <!-- Centering the content -->
+                <div class="footer-widget">
+                    <h3>Contact Info</h3>
+                    <p>🌿 Get in Touch for Expert Homeopathic Care 🌿</p>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i class='flaticon-pin'></i>
+                            <div class="content">
+                                123, Homeo Wellness Clinic, C.G. Road, Ahmedabad, Gujarat, India
+                            </div>
+                        </li>
+                        <li>
+                            <i class='flaticon-phone-call'></i>
+                            <div class="content">
+                                <a href="tel:0015481592491">+91-98765 43210</a>
+                                <a href="tel:0015481592492">+91-98765 43211</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class='bx bxs-envelope'></i>
+                            <div class="content">
+                                <a><span class="__cf_email__" data-cfemail="b3dbd6dfdfdcf3ded6d7dac9dc9dd0dcde">contact@yourhomeopathy.in</span></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 d-flex justify-content-center"> <!-- Centering the content -->
+                <div class="footer-widget">
+                    <h3>Important Link</h3>
+                    <ul class="footer-list">
+                        <li>
+                            <a href="about" target="_blank">
+                                <i class='bx bxs-chevron-right'></i>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="departments" target="_blank">
+                                <i class='bx bxs-chevron-right'></i>
+                                Departments
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services-1" target="_blank">
+                                <i class='bx bxs-chevron-right'></i>
+                                Services
+                            </a>
+                        </li>
+                        <li>
+                            <a href="doctors" target="_blank">
+                                <i class='bx bxs-chevron-right'></i>
+                                Doctors
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/appointment" target="_blank">
+                                <i class='bx bxs-chevron-right'></i>
+                                Appointment
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/shop" target="_blank">
+                                <i class='bx bxs-chevron-right'></i>
+                                Medicine
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact" target="_blank">
+                                <i class='bx bxs-chevron-right'></i>
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 d-flex justify-content-center"> <!-- Centering the content -->
+                <div class="footer-widget ps-2">
+                    <div class="footer-logo">
+                        <a href="/">
+                            <img src="static/assets/img/logo.png" class="footer-logo1" alt="Images">
+                            <img src="static/assets/img/logo-2.png" class="footer-logo2" alt="Images">
+                        </a>
+                    </div>
+                    <p>🌿 Natural Healing with Homeopathy 🌿</p>
+                    <p>Safe, effective, and personalized treatments for a healthier you. Restore balance naturally! ✨💚</p>
+                    <ul class="social-link">
+                        <li>
+                            <a href="https://www.facebook.com/" target="_blank"><i class='bx bxl-facebook'></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.twitter.com/" target="_blank"><i class='bx bxl-twitter'></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/" target="_blank"><i class='bx bxl-instagram'></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.pinterest.com/" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/" target="_blank"><i class='bx bxl-youtube'></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Area End -->
+
+
+        <!-- Copy-Right Area -->
+        <div class="copy-right-area">
+            <div class="container">
+                <div class="copy-right-text text-center">
+                    <p>
+                        Copyright © <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear())</script> Medizo. All Rights Reserved by
+                        <a href="https://hibootstrap.com/" target="_blank">HiBootstrap</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Copy-Right Area End -->
+
+        <!-- Links of JS Files -->
+        <script src="static/assets/js/jquery.min.js"></script>
+        <script src="static/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="static/assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="static/assets/js/owl.carousel.min.js"></script>
+        <script src="static/assets/js/jquery.nice-select.min.js"></script>
+        <script src="static/assets/js/wow.min.js"></script>
+        <script src="static/assets/js/meanmenu.js"></script>
+        <script src="static/assets/js/bootstrap-datepicker.min.js"></script>
+        <script src="static/assets/js/jquery.ajaxchimp.min.js"></script>
+        <script src="static/assets/js/form-validator.min.js"></script>
+        <script src="static/assets/js/contact-form-script.js"></script>
+        <script src="static/assets/js/custom.js"></script>
+    </body>
+
+<!-- Mirrored from templates.hibootstrap.com/medizo/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 16 Dec 2024 07:47:37 GMT -->
+</html>
